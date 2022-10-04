@@ -1,16 +1,24 @@
-public class Driver { 
- public static void main(String [] args) { 
-  Polynomial p = new Polynomial(); 
-  System.out.println(p.evaluate(3)); 
-  double [] c1 = {6,0,0,5}; 
-  Polynomial p1 = new Polynomial(c1); 
-  double [] c2 = {0,-2,0,0,-9}; 
-  Polynomial p2 = new Polynomial(c2); 
-  Polynomial s = p1.add(p2); 
-  System.out.println("s(0.1) = " + s.evaluate(0.1)); 
-  if(s.hasRoot(1)) 
-   System.out.println("1 is a root of s"); 
-  else 
-   System.out.println("1 is not a root of s"); 
- } 
-} 
+public class Driver {
+    public static void main(String [] args) {
+        Polynomial p = new Polynomial("3-3x+4x2+5x5");
+        double[] c = {1.0, 3.0, -5.0, 1.0};
+        int[] i = {0, 1, 2, 3};
+        Polynomial e = new Polynomial(c, i);
+
+        p.saveToFile("test.txt");
+        e.saveToFile("tester.txt");
+
+        Polynomial ep = p.add(e);
+        ep.saveToFile("bruh.txt");
+
+        ep = p.multiply(e);
+        ep.saveToFile("bork.txt");
+
+
+        System.out.println(e.evaluate(3));
+        System.out.println(e.hasRoot(1));
+        System.out.println(e.hasRoot(2));
+
+
+    }
+}
